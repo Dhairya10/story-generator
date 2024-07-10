@@ -4,13 +4,13 @@ from config import CHARACTERS, VOICE_DICT
 from helper import generate_story, get_audio_file
 
 # Set page config first
-st.set_page_config(page_title="Cartoon Story Creator", page_icon="📚", layout="wide")
+st.set_page_config(page_title="Story Creator", page_icon="📚", layout="wide")
 
 # Load and apply CSS
 with open('styles.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.markdown("<h1 class='main-header'>Cartoon Story Creator</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header'>Story Creator</h1>", unsafe_allow_html=True)
 
 # Create a three-column layout
 left_column, center_column, right_column = st.columns([1, 2, 1])
@@ -19,6 +19,9 @@ left_column, center_column, right_column = st.columns([1, 2, 1])
 with center_column:
     topic = st.text_input("What would you like the story to be about?")
     characters = st.multiselect("Choose characters (you can select multiple)", CHARACTERS)
+    
+    # Add duration input
+    duration = st.slider("Choose story duration (in minutes)", min_value=1, max_value=10, value=5, step=1)
 
     # Create a list of voice options for the selectbox
     voice_options = [f"{voice['nickname']}" for voice in VOICE_DICT.values()]
@@ -40,13 +43,12 @@ with center_column:
                 audio_file = None
                 
                 with st.spinner("Generating your story..."):
-                    story = generate_story(topic, characters)
+                    story = generate_story(topic, characters, duration)
                 
                 if story:
-                    st.subheader("Your Story")
-                    st.write(story)
+                    with st.expander("Read Your Story", expanded=True):
+                        st.write(story)
                     
-                    # Add a separator
                     st.markdown("---")
                     
                     st.subheader("Listen to Your Story")
@@ -92,7 +94,7 @@ with st.sidebar:
     st.markdown("<h3 style='color: #4E9CA8;'>How It Works</h3>", unsafe_allow_html=True)
     st.write(
         "1. Enter a topic for your story\n"
-        "2. Choose a cartoon character\n"
+        "2. Choose character(s)\n"
         "3. Click 'Create Story'\n"
         "4. Read your story and listen to the audio version"
     )

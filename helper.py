@@ -13,11 +13,12 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 
-def generate_story(topic, characters):
+def generate_story(topic, characters, duration):
     characters_str = ", ".join(characters)
-    prompt = f"""Write a short, kid-friendly story about {topic} featuring the following characters: {characters_str}. 
-    The story should be maximum 500 words long. Make sure the story is engaging, fun, and appropriate for young children, 
-    incorporating all the selected characters in a meaningful way."""
+    prompt = f"""Write a short, kid-friendly story about {topic} featuring the following characters: {characters_str}. Start the story with a fun title. The story should be {duration} minutes long. Make sure the story is engaging, fun, and appropriate for pre-schoolers, incorporating all the selected characters in a meaningful way.
+    Think before you write the story. First, consider the age group of pre-schoolers and what themes, language, and story structures would be most appropriate and engaging for them. Then, reflect on how each of the selected characters can be meaningfully integrated into the story about the given topic, ensuring each character has a purpose and contributes to the narrative. Consider how the topic can be explored in a way that is both educational and entertaining for young children. Finally, plan the story arc to include a clear beginning, middle, and end, with a simple but valuable lesson or takeaway appropriate for pre-schoolers. After this careful consideration, write the short, kid-friendly story, keeping it within {duration} minutes and maintaining an engaging, fun, and age-appropriate tone throughout.
+    DO NOT OUTPUT INFORMATION LIKE WORD COUNT, THE ENDING, OR ANYTHING ELSE. JUST WRITE THE STORY.
+    """
 
     response = anthropic.Anthropic().messages.create(
         model="claude-3-5-sonnet-20240620",
