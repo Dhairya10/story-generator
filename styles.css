@@ -1,0 +1,35 @@
+.main-header {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #4E9CA8;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.stButton>button {
+    background-color: #4E9CA8;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+.stButton>button:hover {
+    background-color: #3A7A84;
+}
+.stSelectbox [data-baseweb="select"] {
+    border-color: #4E9CA8;
+}
+.stMultiSelect [data-baseweb="select"] {
+    border-color: #4E9CA8;
+}
+.stTextInput>div>div>input {
+    border-color: #4E9CA8;
+}
+.stSpinner>div>div {
+    border-top-color: #4E9CA8;
+}
+.stSubheader {
+    color: #4E9CA8;
+}
