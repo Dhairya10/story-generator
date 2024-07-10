@@ -4,13 +4,13 @@ from config import CHARACTERS, VOICE_DICT
 from helper import generate_story, get_audio_file
 
 # Set page config first
-st.set_page_config(page_title="Story Creator", page_icon="📚", layout="wide")
+st.set_page_config(page_title="Story Generator", page_icon="📚", layout="wide")
 
 # Load and apply CSS
 with open('styles.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.markdown("<h1 class='main-header'>Story Creator</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header'>Story Generator</h1>", unsafe_allow_html=True)
 
 # Create a three-column layout
 left_column, center_column, right_column = st.columns([1, 2, 1])
@@ -84,7 +84,7 @@ with st.sidebar:
     }
     </style>
     """, unsafe_allow_html=True)
-    st.title("About Story Creator")
+    st.title("About Story Generator")
     st.info(
         "This app creates custom stories based on topics you choose, featuring popular cartoon characters. "
         "Simply enter a topic, select a character, and we'll generate a unique "
