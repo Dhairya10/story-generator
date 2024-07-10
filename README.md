@@ -5,6 +5,7 @@
 
 This application allows users to generate custom stories for children. It uses Anthropic API to create stories based on user input and converts the text to speech using Open AI TextToSpeech API
   
+You can find the demo video [here](https://www.loom.com/share/50949a910e3b46f382e45c0d58abce9f?sid=978c6198-7f2d-4e05-b702-6b084e38b1f1)
 
 ## Files
 
